@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"encoding/pem"
 	"os"
 
 	"github.com/openpubkey/openpubkey/parties"
@@ -25,8 +25,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("---")
-	os.Stdout.Write(pktBytes)
-	fmt.Println("")
-	fmt.Println("---")
+
+	pem.Encode(os.Stdout, &pem.Block{
+		Type:  "PK Token",
+		Bytes: pktBytes,
+	})
 }
