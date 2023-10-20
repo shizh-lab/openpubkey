@@ -2,7 +2,9 @@ name: Test OpenPubkey
 
 on:
   push:
-    branches: main
+    branches:
+      - main
+      - dev
 
 jobs:
   build:
